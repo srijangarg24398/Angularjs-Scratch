@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular Js</title>
+	<link rel="stylesheet" type="text/css" href="css/materialize.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/angular.js"></script>
+	<script src="js/materialize.js"></script>
+	<!--<script src="js/jsModule.js"></script>-->
+	<!--<script src="js/iffe.js"></script>-->
+	<script src="js/angularModule.js"></script>
+	<script src="js/service.js"></script>
+	<script src="js/controller.js"></script>
+	
+</head>
+<body ng-app="myApp">
+	<div class="container">
+		<!-- Modules -->
+		<div class="card">
+			<h3 class="center" data-highlight="true">Modules</h3>
+			<ul class="center-block card-content card-action">
+				<li>Module is function having other functions and variables. Accessed by angular.module</li>
+				<li>
+					Functions inside Angular Module
+					<ol>
+						<li>provider</li>
+						<li>factory</li>
+						<li>service</li>
+						<li>value</li>
+						<li>constant</li>
+						<li>decorator</li>
+						<li>animation</li>
+						<li>filter</li>
+						<li>controller</li>
+						<li>directive</li>
+						<li>component</li>
+						<li>config</li>
+					</ol>
+				</li>
+			</ul>
+			<p>The angular.module("moduleName") - searches for existing module with the passed name - <span class="materialize-red-text"> Getter function</span></p>
+			<p>The angular.module("moduleName",[]) - creates a new module - <span class="materialize-red-text"> Setter function</span></p>
+		</div>
+		<!-- Js Calculator -->
+		<div class="card">
+			<div class="card-title center">Addition of two numbers</div>
+			<div class="center">By Javascript</div>
+			<div class="center-block card-content card-action">
+				<div class="input-field col s6">
+			        <input id="firstInput" type="text" class="validate">
+			        <label for="firstInput">First Number</label>
+		        </div>
+		        <div class="input-field col s6">
+			        <input id="secondInput" type="text" class="validate">
+			        <label for="secondInput">Second Number</label>
+		        </div>
+				<button class="btn" id=calculateBtn onclick="calculate()">Calculate !</button>
+				<div class="center badge">Result : <span id="result" class="deep-purple-text text-darken-5">0</span></div>
+			</div>
+			<div class="card-content page-footer card-stacked">
+				<div class="card-title center">Problems</div>
+				<ol>
+					<li>DOM dependent (id and class)</li>
+					<li>Business logic should not be out</li>
+					<li>Code repeat if used again</li>
+					<li>Not expressive</li>
+				</ol>
+			</div>
+		</div>
+		<!-- Design Patterns -->
+		<div class="card">
+			<div class="card-title center">Design Pattern</div>
+			<div class="center-block card-content card-action">
+				<p class="purple-text text-darken-1 center breadcrumb">Solution to a common problem</p><br>
+				<p>Ex. Different people save cash -> We created bank</p>
+				<br>
+				<div style="display: flex; flex-direction: column; align-items: center;">
+					<button class="btn">Model</button>
+					<p>Store and manage data</p>
+					<h5>&darr;&uarr;</h5>
+					<button class="btn">View</button>
+					<p>Presentation of data</p>
+					<h5>&darr;&uarr;</h5>
+					<button class="btn">Controller</button>
+					<div>Perform business logic</div>
+				</div>
+				<br>
+				<p class="purple-text text-darken-1 center">MVC - Saparation of cencerns</p><br>
+			</div>
+		</div>
+		<!-- Directives -->
+		<div class="card">
+			<div class="card-title center">Directives</div>
+			<div class="center-block card-content card-action">
+				<p ng-hide="true">Blah Blah</p><br>
+				<h6 class="center"><u>Example : </u></h6>
+				<div class="materialize-red lighten-4 card-content">
+					< p ng-hide="true" > <b>Directive decorator allows you to mark a class as an Angular directive and provide additional metadata</b> < / p ><br>
+				</div>
+				The Above paragraph is hidden.
+				You can create own directives also.
+			</div>
+		</div>
+		<!-- Controllers -->
+		<div class="card">
+			<div class="card-title center">Controllers</div>
+			<div class="center-block card-content card-action">
+				<p class="center">Associate the controller with body element using <span class="materialize-red-text"> ng-controller </span> directive</p>
+				<h6 class="center"><u>Example : </u></h6>
+				<div class="materialize-red lighten-4 card-content">
+					< tag-name ng-controller="ControllerName as app" >< /tag-name ><br>
+					myApp.controller('ControllerName',function(){  })
+				</div>
+					<h5 class="center">&darr;</h5>
+				<p class="center">Write business logic in controller</p>
+			</div>
+		</div>
+		<!-- Angularjs Calculator -->
+		<div class="card" ng-controller="AppCtrl as app">
+			<div class="card-title center">Addition of two numbers</div>
+			<div class="center">By Angularjs using controllers</div>
+			<div class="center-block card-content card-action">
+				<div class="input-field col s6">
+			        <input id="firstInput" type="text" class="validate" ng-model="app.firstNum">
+			        <label for="firstInput">First Number</label>
+		        </div>
+		        <div class="input-field col s6">
+			        <input id="secondInput" type="text" class="validate" ng-model="app.secondNum">
+			        <label for="secondInput">Second Number</label>
+		        </div>
+				<button class="btn" id=calculateBtn ng-click="app.calculate(app.firstNum,app.secondNum)">Calculate !</button>
+				<div class="center badge">Result : <span id="result" class="deep-purple-text text-darken-5" ng-bind="app.result"></span></div>
+			</div>
+			<div class="card-content card-action">
+				Here we sent data by attaching it to the controller (app)<br>
+				<br>
+				Now here is a sample of how to get data from the controller<br>
+				Put the data in the { { } } and access using nicname of the controller<br>
+				The controller provides all the methods, variables and objects from the controller <br><br>
+				Ex : {{ app.employee.firstName+" "+app.employee.lastName+" -> "+app.employee.occupation }}
+				<blockquote>
+					<li>ng-model : data from html &rarr; controller</li>
+					<li>ng-bind : data from controller &rarr; html</li>
+				</blockquote>
+			</div>
+		</div>
+		<!-- $scope -->
+		<div class="card" ng-controller="AppCtrl">
+			<div class="card-title center">Addition of two numbers</div>
+			<div class="center">By Angularjs using $scope</div>
+			<div class="center-block card-content card-action">
+				<div class="input-field col s6">
+			        <input id="firstInput" type="text" class="validate" ng-model="firstNum">
+			        <label for="firstInput">First Number</label>
+		        </div>
+		        <div class="input-field col s6">
+			        <input id="secondInput" type="text" class="validate" ng-model="secondNum">
+			        <label for="secondInput">Second Number</label>
+		        </div>
+				<button class="btn" id=calculateBtn ng-click="calculate(firstNum,secondNum)">Calculate !</button>
+				<div class="center badge">Result : <span id="result" class="deep-purple-text text-darken-5" ng-bind="result"></span></div>
+			</div>
+			<div class="card-content card-action">
+				The $scope provides all the methods, variables and objects attached to it <br>
+				<blockquote> Ex : From $scope : {{ employee.firstName+" "+employee.lastName+" -> "+employee.occupation }}</blockquote>
+				$scope is passed in controller as :<br><br>
+				<div class="materialize-red lighten-4 card-content">
+					myApp.controller('AppCtrl',function(<b>$scope</b>){ <br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$scope.hello="Hi";<br>
+					});<br><br>
+					{ { hello } }<br><br>
+					<u>Outputs:</u> <b><i>Hi</i></b>
+				</div>
+				<br>
+				Another example using $scope<br>
+				Task : <span>{{taskData.task}}</span><br>
+				Done : 	<span class="switch">
+							<label> Undone <input type="checkbox" ng-model="taskData.status" ng-click="onStatusClick()"> <span class="lever"></span> Done</label>
+						</span><br>
+			</div>
+			<div class="tabs">
+				<div class="tab">
+					<button class="btn btn-large btn-disabled deep-purple lighten-1">View</button>
+				</div>
+				<div class="tab"><h5>&#8644;</h5></div>
+				<div class="tab">
+					<button class="btn btn-large btn-disabled pink lighten-1">$scope</button>
+				</div>
+				<div class="tab"><h5>&#8644;</h5></div>
+				<div class="tab">
+					<button class="btn btn-large btn-disabled deep-purple lighten-1">Controller</button>
+				</div>
+			</div>
+			<br>
+		</div>
+		<!-- Services -->
+		<div class="card">
+			<div class="card-title center">Services</div>
+			<div class="center-block card-content card-action">
+				<p class="center">Encapsulate the responsibilities related to each other and business logic and achieve single goal</p>
+				<blockquote>A service has only and only one instance throughout the application</blockquote>
+				A service is called as : <br>
+				<div class="materialize-red lighten-4 card-content">
+					myApp = angular.module("myApp",[]);<br><br>
+					myApp.<b><u>service</u></b>("<b><u>addSvc</u></b>",function(){<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.add=function(firstNum,secondNum){<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log('Inside add service')<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return parseInt(firstNum)+parseInt(secondNum);<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+					})<br><br>
+					myApp.controller('AppCtrl',function($scope,<b><u>addSvc</u></b>){<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$scope.calculate=function(firstNum,secondNum){<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log('Calculating via service ...')<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.result=addSvc.add(firstNum,secondNum);<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+					})<br>
+				</div>
+			</div>
+		</div>
+		<!-- Filters -->
+		<div class="card" ng-controller="AppCtrl">
+			<div class="card-title center">Filters</div>
+			<div class="center-block card-content card-action">
+				<p class="center">Associate the controller with body element using</p>
+				<h6 class="center"><u>Example : </u></h6>
+				<u><i>Without filter :</i></u> 
+				<p>{{ toUppercase("This is uppercased without a filter") }}</p>
+				<u><i>With filter</i></u>
+				<p>{{ "This text is uppercased by a filter" | uppercase }}</p>
+				<br>
+				<div class="materialize-red lighten-4 card-content">
+					{ { "srijan garg" | uppercase } }
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$("h3[data-highlight='true']").css('background','skyblue')
+	</script>
+</body>
+<script src="js/additional.js"></script>
+</html>
